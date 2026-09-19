@@ -6,6 +6,8 @@ class Program
     {
         Journal journal = new Journal();
 
+        // Extra feature: Added a search function so users can find journal
+        // entries by searching words in the prompt or response.
         bool running = true;
 
         while (running)
@@ -16,6 +18,7 @@ class Program
             Console.WriteLine("3. Save the journal");
             Console.WriteLine("4. Load the journal");
             Console.WriteLine("5. Quit");
+            Console.WriteLine("6. Search the journal");
             Console.Write("Please choose an option: ");
 
             string choice = Console.ReadLine();
@@ -48,6 +51,13 @@ class Program
             {
                 running = false;
                 Console.WriteLine("Goodbye!");
+            }
+            else if (choice == "6")
+            {
+                Console.Write("Enter a word to search for: ");
+                string searchTerm = Console.ReadLine();
+
+                journal.Search(searchTerm);
             }
             else
             {

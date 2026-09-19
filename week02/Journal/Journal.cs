@@ -71,4 +71,24 @@ class Journal
         Console.WriteLine("Journal loaded successfully.");
         Console.WriteLine();
     }
+    public void Search(string searchTerm)
+    {
+        bool found = false;
+
+        foreach (Entry entry in _entries)
+        {
+            if (entry._prompt.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                entry._response.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            {
+                entry.Display();
+                found = true;
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("No journal entries matched your search.");
+            Console.WriteLine();
+        }
+    }
 }
